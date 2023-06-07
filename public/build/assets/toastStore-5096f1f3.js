@@ -1,0 +1,1 @@
+import{l as r}from"./lodash-0398a713.js";import{P as u,k as o}from"./app-b12ef7d3.js";const c=u("toastStore",()=>{const e=o(null),t=o(null),s=r.debounce((a,l)=>{e.value=a,t.value=l,setTimeout(()=>{e.value=null,t.value=null},3e3)},250);return{message:e,type:t,setParams:s}});export{c as u};
