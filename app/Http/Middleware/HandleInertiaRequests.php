@@ -2,17 +2,21 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\TechStack;
+use App\Service\TechStackService;
 use App\Service\VisitorCounterService;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 
 class HandleInertiaRequests extends Middleware
 {
-    protected $service;
+    protected $visitorCounterService;
+    protected $techStackService;
 
-    public function __construct(VisitorCounterService $service)
+    public function __construct(VisitorCounterService $visitorCounterService, TechStackService $techStackService)
     {
-        $this->service = $service;
+        $this->visitorCounterService = $visitorCounterService;
+        $this->techStackService = $techStackService;
     }
 
     /**
@@ -51,7 +55,7 @@ class HandleInertiaRequests extends Middleware
                 'gitlab' => 'https://gitlab.com/rjdalmacio02',
                 'linkedIn' => 'https://www.linkedin.com/in/rogerdalmacio/',
             ],
-            'visitorCounter' => $this->service->visitorCount(),
+            'visitorCounter' => $this->visitorCounterService->visitorCount(),
         ]);
     }
 }

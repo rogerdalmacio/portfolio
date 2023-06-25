@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Service\TechStackService;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -18,6 +19,8 @@ class Project extends Model
     protected $casts = [
         'tech_stacks' => 'array',
     ];
+
+    protected $techStackService;
 
     public $photo_path = ['photo'];
 
@@ -39,6 +42,15 @@ class Project extends Model
         'project_type',
         'project_description',
     ];
+
+    public function setUp()
+    {
+        parent::__construct();
+
+        $this->techStackService = TechStackService::class;
+
+        dd();
+    }
 
     public function getFillablesClone()
     {

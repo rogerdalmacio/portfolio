@@ -8,11 +8,10 @@ import TextInput from '@/Components/TextInput.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import SecondaryButton from '@/Components/SecondaryButton.vue';
 import DangerButton from '@/Components/DangerButton.vue'
-import Datepicker from 'vue3-datepicker'
-import moment from 'moment';
 import { useToastStore } from '@/stores/toastStore';
 import Toast from '@/Components/Toast.vue';
 import InputError from '@/Components/InputError.vue';
+import DatePicker from '@/Components/DatePicker.vue';
 
 const toast = useToastStore();
 
@@ -26,10 +25,18 @@ const props = defineProps({
 
 const emit = defineEmits(['close']);
 
+const techStacks = ref([]);
+
+const emptyTechStack = () => {
+    let techStackLength = techStacks.value.length;
+    techStacks.value.splice(0, techStackLength);
+    console.log(techStacks.value);
+}
+
 const closeModal = () => {
-    projectForm.reset();
+    emptyTechStack();
     projectForm.clearErrors();
-    techStacks.value = [];
+    projectForm.reset();
     emit('close');
 }
 
@@ -39,8 +46,6 @@ const setImagePath = (tempImage) => {
     image.value = URL.createObjectURL(tempImage);
     console.log(image.value);
 }
-
-const techStacks = ref([]);
 
 watch(
     techStacks.value, 
@@ -70,23 +75,6 @@ const removeTechStack = (tech) => {
     techStacks.value.splice(techStacks.value.indexOf(tech), 1);
 }
 
-const dateStarted = ref();
-const dateFinished = ref();
-
-watch(
-    () => dateStarted.value,
-    (newValue) => {
-        projectForm.date_started = moment(newValue).format('YYYY-MM-DD');
-    }
-)
-
-watch(
-    () => dateFinished.value,
-    (newValue) => {
-        projectForm.date_finished = moment(newValue).format('YYYY-MM-DD');
-    }
-)
-
 const projectForm = useForm({
     id: props.currentProject?.id ?? "",
     title: props.currentProject?.title ?? "",
@@ -104,7 +92,7 @@ watch(
     (newValue) => {
         projectForm.id = newValue?.id;
         projectForm.title = newValue?.title;
-        techStacks.value = newValue?.tech_stack;
+        techStacks.value = newValue?.tech_stack ?? [];
         projectForm.tech_stack = newValue?.tech_stack;
         projectForm.date_started = newValue?.date_started;
         projectForm.date_finished = newValue?.date_finished;
@@ -242,8 +230,11 @@ const deleteProject = () => {
                         <InputLabel 
                             value="Date Started"
                         />
-                        <p class="text-xs text-gray-400" v-if="props.currentProject?.id">old : {{ props.currentProject?.date_started }}</p>
-                        <Datepicker v-model="dateStarted"/>
+                        <DatePicker
+                            input-id="Date Started"
+                            v-model="projectForm.date_started"
+                            format="YYYY-MM-DD"
+                        />
                         <InputError
                             :message="projectForm.errors?.date_started"
                         />
@@ -252,8 +243,11 @@ const deleteProject = () => {
                         <InputLabel 
                             value="Date Finished"
                         />
-                        <p class="text-xs text-gray-400" v-if="props.currentProject?.id">old : {{ props.currentProject?.date_finished }}</p>
-                        <Datepicker v-model="dateFinished" :lowerLimit="dateStarted" />
+                        <DatePicker
+                            inputId="Date Finished"
+                            v-model="projectForm.date_finished"
+                            format="YYYY-MM-DD"
+                        />
                         <InputError
                             :message="projectForm.errors?.date_finished"
                         />

@@ -14,6 +14,10 @@ const props = defineProps({
         type: Boolean,
         default: true,
     },
+    closeableOutside: {
+        type: Boolean,
+        default: false,
+    }
 });
 
 const emit = defineEmits(['close']);
@@ -33,7 +37,7 @@ const close = () => {
 };
 
 const closeOnEscape = (e) => {
-    if (e.key === 'Escape' && props.show) {
+    if (e.key === 'Escape' && props.show && props.closeableOutside) {
         close();
     }
 };
@@ -68,7 +72,7 @@ const maxWidthClass = computed(() => {
                     leave-from-class="opacity-100"
                     leave-to-class="opacity-0"
                 >
-                    <div v-show="show" class="fixed inset-0 transform transition-all" @click="close">
+                    <div v-show="show" class="fixed inset-0 transform transition-all" @click="props.closeableOutside ? close() : null">
                         <div class="absolute inset-0 bg-gray-100 opacity-75" />
                     </div>
                 </transition>

@@ -43,15 +43,15 @@ const closeModal = () => {
             <div class="group max-h-72 shadow-md border rounded-md hover:shadow-2xl duration-300 p-4" v-for="project in projects.data" :key="project.id">
                 <button 
                     type="button"
-                    class="flex flex-col justify-between h-full w-full"
+                    class="flex flex-col justify-between items-center h-full w-full"
                     @click="openCurrentProject(project)"
                 >
                     <img 
-                        class="drop-shadow-md"
+                        class="drop-shadow-md h-52 w-full"
                         :src="`/storage/projects/` + project.photo" alt=""
                     >
                     <div>
-                        <h1 class="text-start text-lg group-hover:text-green-400 transition duration-300">{{ project.title }}</h1>
+                        <h1 class="text-center text-lg group-hover:text-green-400 transition duration-300">{{ project.title }}</h1>
                         <ul class="flex flex-row gap-1 flex-wrap truncate">
                             <li class="px-1.5 py-0.5 text-xs border border-1 rounded-md text-gray-500 flex justify-between items-center gap-2 hover:bg-green-400 hover:text-white" v-for="techStack in project.tech_stack.slice(0, 5)">
                                 {{ techStack }}
