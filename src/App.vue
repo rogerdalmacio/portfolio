@@ -11,24 +11,22 @@ import { onMounted } from 'vue'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Footer from '@/components/Footer.vue'
-import { debounce } from 'lodash'
 
 onMounted(() => {
   gsap.registerPlugin(ScrollTrigger);
   const div = document.querySelector("#hero");
-  const rect = div.getBoundingClientRect();
-  window.addEventListener('scroll', debounce(() => {
-    console.log(rect.bottom)
-  }, 100))
+  const rect = div?.getBoundingClientRect();
 
-  gsap.to('#logo', {
-    alpha: 0,
-    scrollTrigger: {
-      trigger: '#logo',
-      start: `+=${rect.bottom - 200} top`,
-      end: 'max',
-      toggleActions: 'play pause resume reverse',
-    }
-  });
+  if (rect) {
+    gsap.to('#logo', {
+      alpha: 0,
+      scrollTrigger: {
+        trigger: '#logo',
+        start: `+=${rect?.bottom - 200} top`,
+        end: 'max',
+        toggleActions: 'play pause resume reverse',
+      }
+    });
+  }
 })
 </script>

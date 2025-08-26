@@ -41,6 +41,8 @@ import DrawSVGPlugin from 'gsap/DrawSVGPlugin'
 onMounted(() => {
   const svgLine = document.querySelector('#svgLine');
   const linePath = svgLine?.querySelector('#linePath');
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-expect-error
   const linePathLength = linePath?.getTotalLength();
   gsap.registerPlugin(ScrollTrigger);
   gsap.registerPlugin(DrawSVGPlugin);
