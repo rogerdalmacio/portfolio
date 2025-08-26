@@ -1,0 +1,17 @@
+{
+  "files": [],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]   // 👈 This is what shadcn-vue expects
+    }
+  },
+  "references": [
+    {
+      "path": "./tsconfig.node.json",
+    },
+    {
+      "path": "./tsconfig.app.json"
+    }
+  ]
+}
