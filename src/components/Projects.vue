@@ -1,5 +1,5 @@
 <template>
-  <section class="w-full bg-primary-1 py-10 -mb-1">
+  <section id="projects" class="w-full bg-primary-1 py-10 -mb-1">
     <div class="relative default-container default-padding h-full">
       <p id="project-title" class="text-white text-2xl sm:text-5xl md:text-7xl font-krona text-center">
         <span class="project-text">To take part </span>
@@ -16,9 +16,9 @@
           </li>
         </template>
       </ul>
-      <Buffer class="md:h-screen" />
+      <Buffer class="h-screen" />
     </div>
-    <Buffer class="h-[300px]" />
+    <Buffer class="h-[150px] md:h-[300px]" />
   </section>
 </template>
 

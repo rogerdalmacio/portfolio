@@ -3,7 +3,8 @@ import type { Ref } from 'vue'
 
 const tl = gsap.timeline({paused: true});
 
-function toggleMenu(menuBtn: Ref<HTMLElement|null>) {
+function toggleMenu() {
+  const hamburger = document.querySelector('#hamburger');
   const x = document.querySelectorAll(".x");
   tl.to('#hamburger', {
     rotate: "360",
@@ -29,15 +30,24 @@ function toggleMenu(menuBtn: Ref<HTMLElement|null>) {
       ease: 'circ.inOut',
       alpha: 1,
     }, '<')
+    .to('#logo', {
+      alpha: 0,
+      duration: 1
+    }, '<')
+    .to('#menu-overlay', {
+      y: 0,
+      ease: 'power4.inOut',
+      duration: 1,
+    }, '<')
 
 
-  if (menuBtn.value?.getAttribute('aria-expanded') === "false") {
-    menuBtn.value?.setAttribute('aria-label', "close-menu")
-    menuBtn.value?.setAttribute('aria-expanded', "true");
+  if (hamburger?.getAttribute('aria-expanded') === "false") {
+    hamburger?.setAttribute('aria-label', "close-menu")
+    hamburger?.setAttribute('aria-expanded', "true");
     tl.play()
   } else {
-    menuBtn.value?.setAttribute('aria-label', "open-menu")
-    menuBtn.value?.setAttribute('aria-expanded', "false");
+    hamburger?.setAttribute('aria-label', "open-menu")
+    hamburger?.setAttribute('aria-expanded', "false");
     tl.reverse()
   }
 }

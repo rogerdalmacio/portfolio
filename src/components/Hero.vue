@@ -4,7 +4,7 @@
     <div class="layer trees absolute w-full object-contain"></div>
     <LottieAnimation
       id="rocket1"
-      class="absolute top-1/4 right-1/3 w-86 z-10"
+      class="absolute top-1/4 right-1/3 w-86 z-1"
       :animation-data="BirdsJson"
       :auto-play="true"
       :loop="true"

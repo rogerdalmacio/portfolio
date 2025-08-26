@@ -1,12 +1,11 @@
 <template>
-  <nav class="sticky top-0 w-full z-1">
+  <nav class="sticky top-0 w-full z-50">
     <div class="default-container default-padding flex items-center justify-between py-10">
       <a href="/" class="px-4">
         <Logo id="logo" class="w-[80px] text-white" />
       </a>
       <div class="bg-white rounded-full h-16 w-16 flex items-center justify-center drop-shadow-sm">
         <button
-          ref="menuBtn"
           id="hamburger"
           @click="toggle"
           class="cursor-pointer relative"
@@ -26,17 +25,12 @@
 <script setup lang="ts">
 
 import Logo from '@/components/Logo.vue'
-import { onMounted, ref } from 'vue'
+import { ref } from 'vue'
 import useMenu from '@/composables/useMenu.ts'
 
-const menuBtn = ref<HTMLElement|null>(null);
 const {toggleMenu} = useMenu();
 
 const toggle = () => {
-  toggleMenu(menuBtn)
+  toggleMenu()
 }
-
-onMounted(() => {
-
-})
 </script>

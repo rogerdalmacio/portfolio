@@ -1,5 +1,5 @@
 <template>
-  <section class="w-full bg-primary-1 py-10 -mb-1">
+  <section id="contacts" class="w-full bg-primary-1 py-10 -mb-1">
     <div class="relative default-container default-padding h-full">
       <p id="contact-title" class="text-white text-2xl sm:text-5xl md:text-7xl font-krona text-center">
         <span class="contact-title-text">Ready to ride </span>
@@ -9,7 +9,7 @@
       <div id="contact-wrapper" class="flex items-center justify-center gap-5">
         <Dialog>
           <DialogTrigger as-child>
-            <button class="contact-item cursor-pointer flex items-center">
+            <button class="contact-item cursor-pointer flex items-center" aria-label="contact-modal-button" aria-controls="contact-modal">
               <Telephone class="w-12 md:w-[96px]"  />
             </button>
           </DialogTrigger>
@@ -31,7 +31,7 @@
         </a>
       </div>
     </div>
-    <Buffer class="h-[300px]" />
+    <Buffer class="h-[200px]" />
   </section>
 </template>
 <script setup lang="ts">

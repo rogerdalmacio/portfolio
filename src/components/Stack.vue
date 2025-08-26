@@ -1,5 +1,5 @@
 <template>
-  <section class="w-full bg-primary-1 py-10 -mb-1">
+  <section id="tech-stack" class="w-full bg-primary-1 py-10 -mb-1">
     <div class="relative default-container default-padding h-full">
       <p id="tech-stack" class="text-white text-2xl sm:text-5xl md:text-7xl font-krona text-center">
         <span class="tech-stack-title">Using </span>

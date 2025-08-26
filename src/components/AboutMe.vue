@@ -1,5 +1,5 @@
 <template>
-  <section class="w-full bg-primary-1 py-10 -mb-1">
+  <section id="about-me" class="w-full bg-primary-1 py-10 -mb-1">
     <div class="relative default-container default-padding h-full">
       <div class="relative flex flex-col justify-between items-center lg:items-start py-10">
         <p class="intro text-white font-krona max-w-4xl text-2xl md:text-5xl">
