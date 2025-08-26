@@ -11,7 +11,7 @@
           <span class="intro-text">applications.</span>
         </p>
       </div>
-      <svg id="svgLine" class="absolute top-0 sm:-top-20 md:top-40 left-0 px-10" width="auto" height="722" viewBox="0 0 1117 722" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg id="svgLine" class="absolute top-0 sm:-top-20 md:top-40 left-0 px-10 w-full" height="722" viewBox="0 0 1117 722" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path id="linePath" d="M1106.5 10.5C1106.5 711.5 10.5 10.5 10.5 711.5" stroke="white" stroke-width="20" stroke-miterlimit="1.00187" stroke-linecap="round"/>
       </svg>
       <buffer class="h-[150px] md:h-[300px]" />
