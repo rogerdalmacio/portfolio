@@ -16,7 +16,7 @@
           </li>
         </template>
       </ul>
-      <Buffer class="h-screen" />
+      <Buffer class="md:h-screen" />
     </div>
     <Buffer class="h-[300px]" />
   </section>
